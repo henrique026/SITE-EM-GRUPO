@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cortes</title>
+
+<style>
+/*================= MENU =================*/
+.menu{
+position:fixed;
+top:0;
+width:100%;
+background:#f5f3f3;
+z-index:1000;
+box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+
+.menu-container{
+max-width:1200px;
+margin:auto;
+padding:10px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo-menu{
+width:100px;
+}
+
+.menu-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.menu-links a{
+text-decoration:none;
+color:black;
+font-size:16px;
+}
+
+
+
+/* ===== ESPAÇO DO SITE ===== */
+.conteudo{
+    margin-top:120px;
+    max-width:900px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:20px;
+}
+
+
+
+/* ===== BOTÃO DE ABRIR TEXTO ===== */
+details{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+summary{
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+
+/* Barra de pesquisa */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+#barraPesquisa {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 180px;
+    transition: 0.3s;
+}
+
+#barraPesquisa:focus {
+    width: 220px;
+    border-color: rgb(0, 0, 0);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+
+/* PRODUTOS */
+    section#acessorios {
+      padding: 60px 20px;
+    }
+
+    section#acessorios h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 32px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .produto {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .produto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .img-container {
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .img-container:hover img {
+      transform: scale(1.1);
+    }
+
+    .produto h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .preco {
+      color: #2b2b2b;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background: #333;
+    }
+
+
+
+
+
+/* ================= FOOTER parte final ================= */
+.footer {
+  background: #000000;
+  color: #e9e9e9;
+  padding: 60px 0 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  color: #dadada;
+  font-size: 14px;
+}
+
+/* NEWSLETTER */
+.newsletter-form {
+  display: flex;
+  margin-top: 10px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+.newsletter-form button {
+  padding: 10px 20px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* REDES SOCIAIS */
+.footer-social a img {
+  width: 28px;
+  margin-right: 10px;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #000000;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #cacaca;
+}
+
+
+.logo-link{
+    text-decoration: none;
+}
+
+</style>
+
+
+
+<script>
+function pesquisar(event) {
+    event.preventDefault();
+
+    let input = document.getElementById("barraPesquisa").value.toLowerCase().trim();
+
+    /* 🔀 REDIRECIONA APENAS PARA CORTES */
+    if (
+        input.includes("marcas") ||
+        input.includes("tipos de cabelo") ||
+        input.includes("influenciadores") ||
+        input.includes("importancia")
+    ) {
+        window.location.href = "curly hair senac.html";
+        return false;
+    }
+
+    /* 🔎 FILTRO NORMAL */
+    let produtos = document.querySelectorAll(".produto");
+    let encontrou = false;
+
+    produtos.forEach(function(produto) {
+        let texto = produto.innerText.toLowerCase();
+
+        if (texto.includes(input)) {
+            produto.style.display = "block";
+            encontrou = true;
+        } else {
+            produto.style.display = "none";
+        }
+    });
+
+    if (!encontrou) {
+        alert("Nenhum resultado encontrado.");
+    }
+
+    return false;
+}
+</script>
+</head>
+
+
+
+<body>
+<!-- cabeçalho -->
+<nav class="menu">
+    <div class="menu-container">
+        <!-- LOGO -->
+         
+        <img src="img/e598cdea-0bb9-4140-8a06-2ad3ca87b18d-Photoroom (1).png" class="logo-menu" alt="logo">
+
+        <!-- MENU -->
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+               <li><a href="curly hair senac.html">página inicial</a></li>
+             <li><a href="ACC.html">Acessórios</a></li>
+        </ul>   
+
+        <!-- BARRA DE PESQUISA -->
+        <form onsubmit="return pesquisar(event)" class="search-form">
+            <input type="text" id="barraPesquisa" placeholder="Pesquisar...">
+        </form>
+    </div>
+</nav>
+
+
+
+<!-- ACESSÓRIOS -->
+
+
+<!-- ACESSÓRIOS -->
+<section id="acessorios" class="container">
+  <h2>Nossos Profissionais</h2>
+  <div class="produtos">
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://nucleocursos.com.br/blog/wp-content/uploads/2022/10/Vale-a-pena-ser-Cabeleireiro.jpeg">
+      </div>
+      <h3>Paula Silva</h3>
+      <h4>Especialista em cortes e hidratação para cabelos cacheados, destaca o volume natural com estilo moderno.</h4>
+      <a href="contato.html" class="botao">Entrar em contato</a>
+
+    </div>
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://th.bing.com/th/id/R.9f00f723afbcd53a823bf123d5d44ea4?rik=h7A0H%2fxCBBoIdQ&pid=ImgRaw&r=0">
+      </div>
+      <h3>Bruna Costa</h3>
+      <h4>Foco em coloração e definição de cachos, transforma fios crespos em looks vibrantes e saudáveis.</h4>
+        <a href="contato.html" class="botao">Entrar em contato</a>
+      
+    </div>
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://img.freepik.com/fotos-premium/o-barbeiro-profissional-trabalhando-no-cabelo-de-seu-cliente-generative-por-ai_960080-2737.jpg">
+      </div>
+      <h3>Rafael Souza</h3>
+      <h4>Expert em cortes masculinos e texturização para crespos, garante estilo e praticidade.</h4>
+       <a href="contato.html" class="botao">Entrar em contato</a>
+      
+    </div>
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.zMIUxiOHqigkJ8ZeIyRv4gHaFr?w=960&h=737&rs=1&pid=ImgDetMain&o=7&rm=3">
+      </div>
+      <h3>Thiago Lima</h3>
+      <h4>Especialidade em transições e tratamentos nutritivos para cabelos cacheados e crespos, realçando movimento e brilho.</h4>
+      <a href="contato.html" class="botao">Entrar em contato</a>
+     
+    </div>
+</section>
+
+
+    <p style="margin: 40px; padding: 60px;"></p>
+
+<!--comercial-->
+<a href="Index.html"> <img src="img/PROPAGANDA INFINITY.jpeg" width="1900" height="500"> </a>
+
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+     <p style="margin: 40px; padding: 60px;"> <h1 style="text-align: center;"> Cortes mais populares</h1> </p>
+</h1>
+
+<p style="margin: 15px; padding: 20px;"></p>
+<div class="produto"> 
+<img src="https://shorthairstyles.com/wp-content/uploads/2024/02/117973941_340082460457486_5979710176007189164_n-1024x1024.jpg" 
+width="250" height="250" align="left">
+<h1> Curly Crop</h1>
+<h2>O Curly Crop é um corte de cabelo masculino ideal para quem tem cabelo cacheado ou ondulado. <br>
+     Nesse estilo, o topo do cabelo fica um pouco mais longo para destacar os cachos naturais, enquanto
+      as laterais <br>e a parte de trás são cortadas mais curtas, muitas vezes em degradê. A franja geralmente
+       é mantida <br> curta ou levemente bagunçada, dando um visual moderno e estiloso.
+Esse corte valoriza o volume <br> e a textura natural do cabelo, deixando os cachos mais definidos. Além disso, 
+é um estilo prático para o <br> dia a dia, pois não exige muita finalização. Com apenas um creme ou ativador de c <br>
+achos já é possível manter o cabelo bonito e arrumado.✂️
+</h2> 
+</div>
+
+
+
+<p style="margin: 15px; padding: 20px;"></p>
+<div class="produto"> 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ51myHjQ7g3OezT9aOcc3NR05ae1MXX8PuHg&s" 
+width="250" height="250" align="left">
+<h1> Wolf cut </h1>
+<h2>O Wolf Cut cacheado é um corte moderno e cheio de personalidade que mistura características <br>do Shag haircut
+     com o Mullet haircut. Ele ficou muito popular nos últimos anos, <br> principalmente nas redes sociais, porque cria
+  um visual mais natural, <br> volumoso e um pouco “desarrumado”, que combina muito bem com a textura dos cabelos cacheados. <br>
+        Nesse corte, o cabelo é trabalhado em várias camadas, com bastante volume na parte de cima da <br>cabeça e nas laterais,
+     enquanto a parte de trás costuma ficar um pouco mais longa. <br>Essas camadas ajudam os cachos a ficarem mais definidos
+             e leves, evitando que o cabelo fique pesado ou sem movimento. ✂️
+</h2> 
+</div>
+
+
+
+
+<p style="margin: 15px; padding: 20px;"></p>
+<div class="produto"> 
+<img src="https://enfisa.com.br/wp-content/uploads/2023/02/cacheado-em-camadas.jpeg" 
+width="250" height="250" align="left">
+<h1> Corte em camadas</h1>
+<h2>O corte em camadas para cabelo cacheado é um estilo em que o cabelo é cortado em diferentes comprimentos, <br>
+    formando várias “camadas” ao longo da cabeça. Em vez de todo o cabelo ficar <br> do mesmo tamanho, algumas partes
+     ficam mais curtas e outras mais longas. Isso ajuda <br>a distribuir melhor o volume e faz com que os cachos tenham 
+     mais movimento e leveza. <br> Em cabelos cacheados, esse tipo de corte é muito valorizado porque evita que o cabelo 
+     fique pesado ou com <br>formato muito triangular, algo que pode acontecer quando todos os fios têm o mesmo comprimento. <br>
+As camadas também ajudam a definir melhor os cachos, já que cada parte do cabelo consegue se formar de maneira mais
+ natural. ✂️
+</h2> 
+</div>
+
+
+
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+     <p style="margin: 40px; padding: 60px;"> <h1 style="text-align: center;"> Alguns Procedimentos </h1> </p>
+</h1>
+
+
+<section id="acessorios" class="container">
+
+  <div class="produtos">
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (1).jpeg">
+      </div>
+      <h3>Hidratação profunda</h3>
+      <h4>nutre e revitaliza cabelos secos ou danificados. 💰 ~ R$180 a R$300</h4></div>
+
+
+  
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (2).jpeg">
+      </div>
+      <h3>Reconstrução</h3>
+      <h4>fortalece fios quebradiços e quimicamente tratados. 💰 ~ R$300 a R$450</h4>
+    </div>
+
+
+  
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (3).jpeg">
+      </div>
+      <h3>Coloração</h3>
+      <h4>transforma a cor dos fios, cobrindo grisalhos ou criando efeitos modernos. 💰 ~ R$200 a R$500+</h4></div>
+
+</section>
+  
+
+
+<section id="acessorios" class="container">
+
+  <div class="produtos">
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (4).jpeg">
+      </div>
+      <h3>Cauterização</h3>
+      <h4>sela cutículas e reduz frizz, deixando fios mais alinhados. 💰 ~ R$350 a R$450</h4></div>
+  
+
+  
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (5).jpeg">
+      </div>
+      <h3>Botox</h3>
+      <h4>hidratação intensa que dá brilho, maciez e reduz frizz. 💰 ~ R$250 a R$400</h4></div>
+
+
+  
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/1 (6).jpeg">
+      </div>
+      <h3>Tratamento com queratina</h3>
+      <h4>alinha fios, reduz frizz e devolve força e brilho. 💰 ~ R$200 a R$500+</h4></div>
+  
+</section>
+  
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-col">
+      <h2 class="footer-logo">Infinity Glow</h2>
+      <p>Moda urbana, moderna e cheia de estilo. Seu look, sua identidade.</p>
+    </div>
+
+    <div class="footer-col newsletter">
+      <h3>Assine nossa newsletter</h3>
+      <p>Receba novidades e promoções exclusivas diretamente no seu e-mail.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="footer-col">
+      <h3>Siga Infinity Glow</h3>
+      <div class="footer-social">
+  <a href="https://www.instagram.com" target="_blank"><img src="https://www.freepnglogos.com/uploads/instagram-logo-png/white-instagram-logo-black-and-white-icon--14.png" alt="Instagram"></a>
+  <a href="https://www.facebook.com" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.MuwDvybtb_PqVOGREGIjegHaHb?w=482&h=484&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Facebook"></a>
+  <a href="https://twitter.com" target="_blank"><img src="https://tse4.mm.bing.net/th/id/OIP._j_CS9V2HOZOf4P9vqD4GgHaHa?w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Twitter"></a>
+</div>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    <p>© 2026 Infinity Glow. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>

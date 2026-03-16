@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>curly hair</title>
+
+<style>
+
+/* PRODUTOS */
+    section#acessorios {
+      padding: 60px 20px;
+    }
+
+    section#acessorios h2 {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 32px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+
+    .produto {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .produto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .img-container {
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: 0.4s;
+    }
+
+    .img-container:hover img {
+      transform: scale(1.1);
+    }
+
+    .produto h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .preco {
+      color: #2b2b2b;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background: #333;
+    }
+
+/*================= MENU =================*/
+.menu{
+position:fixed;
+top:0;
+width:100%;
+background:#f5f3f3;
+z-index:1000;
+box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+
+.menu-container{
+max-width:1200px;
+margin:auto;
+padding:10px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo-menu{
+width:100px;
+}
+
+.menu-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.menu-links a{
+text-decoration:none;
+color:black;
+font-size:16px;
+}
+
+/*================= CARROSSEL =================*/
+.carousel{
+position:relative;
+width:80%;
+margin:120px auto;
+overflow:hidden;
+}
+
+.carousel-container{
+display:flex;
+transition:transform 0.5s ease;
+}
+
+.slide{
+min-width:100%;
+text-align:center;
+padding:20px;
+}
+
+.slide img{
+width:300px;
+height:300px;
+object-fit:cover;
+border-radius:15px;
+}
+
+/*================= BOTÕES =================*/
+.prev,.next{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+padding:15px;
+cursor:pointer;
+border-radius:50%;
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+/*================= FOOTER =================*/
+.footer{
+background:#111;
+color:white;
+padding:60px 20px;
+}
+
+.footer-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.footer-social img{
+width:28px;
+margin-right:10px;
+}
+
+.footer-copy{
+text-align:center;
+margin-top:30px;
+border-top:1px solid #333;
+padding-top:20px;
+color:#aaa;
+}
+
+/* Barra de pesquisa */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+#barraPesquisa {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 180px;
+    transition: 0.3s;
+}
+
+#barraPesquisa:focus {
+    width: 220px;
+    border-color: rgb(71, 71, 71);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/*ICONE LOJA*/
+.icone-loja{
+
+width:40px;
+cursor:pointer;
+margin-left:15px;
+transition:0.3s;
+
+}
+
+.icone-loja:hover{
+
+transform:scale(1.1);
+
+}
+
+/* ================= CARRINHO ================= */
+#carrinho {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -3px 0 15px rgba(255, 255, 255, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#carrinho.aberto {
+  transform: translateX(0);
+}
+
+.carrinho-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrinho-header .fechar {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#itens-carrinho {
+  flex: 1;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+#itens-carrinho p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#itens-carrinho button.remover {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 2px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.carrinho-footer {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+#icone-carrinho{color: white;}
+
+/* BOTÃO ADICIONAR AO CARRINHO */
+
+.btn-carrinho{
+
+width:100%;
+margin-top:10px;
+
+padding:10px;
+
+background:#000;
+color:#fff;
+
+border:none;
+border-radius:6px;
+
+font-size:14px;
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+/* HOVER */
+
+.btn-carrinho:hover{
+
+background:#333;
+transform:scale(1.03);
+
+}
+
+</style>
+
+
+
+<script>
+function pesquisar(event) {
+    event.preventDefault();
+
+    let input = document.getElementById("barraPesquisa").value.toLowerCase().trim();
+
+    /* 🔀 REDIRECIONA APENAS PARA CORTES */
+    if (
+        input.includes("corte") ||
+        input.includes("cortes") ||
+        input.includes("corte de cabelo") ||
+        input.includes("cortes de cabelo")
+    ) {
+        window.location.href = "cortes.html";
+        return false;
+    }
+
+    /* 🔎 FILTRO NORMAL */
+    let produtos = document.querySelectorAll(".produto");
+    let encontrou = false;
+
+    produtos.forEach(function(produto) {
+        let texto = produto.innerText.toLowerCase();
+
+        if (texto.includes(input)) {
+            produto.style.display = "block";
+            encontrou = true;
+        } else {
+            produto.style.display = "none";
+        }
+    });
+
+    if (!encontrou) {
+        alert("Nenhum resultado encontrado.");
+    }
+
+    return false;
+}
+
+
+let slideAtual = 0;
+
+function mudarSlide(direcao) {
+    const container = document.getElementById("carouselContainer");
+    const slides = document.querySelectorAll(".slide");
+
+    slideAtual += direcao;
+
+    if (slideAtual < 0) slideAtual = slides.length - 1;
+    if (slideAtual >= slides.length) slideAtual = 0;
+
+    container.style.transform = `translateX(-${slideAtual * 100}%)`;
+}
+
+</script>
+</head>
+
+
+<body>
+    
+
+<!-- cabeçalho -->
+<nav class="menu">
+    <div class="menu-container">
+        
+        <!-- LOGO -->
+         
+        <img src="img/e598cdea-0bb9-4140-8a06-2ad3ca87b18d-Photoroom (1).png" class="logo-menu" alt="logo">
+
+        <!-- MENU -->
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#Tipos de Cabelo">Tipos de Cabelo</a></li>
+            <li><a href="#Top 5 Marcas no Brasil">Marcas</a></li>
+            <li><a href="#Influênciadores">Influenciadores</a></li>
+            <li><a href="#Importância">Importância dos cuidados</a></li>
+             <li><a href="ACC.html">Acessórios</a></li>
+        </ul>   
+
+        <!-- BARRA DE PESQUISA -->
+        <form onsubmit="return pesquisar(event)" class="search-form">
+            <input type="text" id="barraPesquisa" placeholder="Pesquisar...">
+        </form>
+
+<img 
+src="https://img.icons8.com/ios-filled/50/shopping-bag.png"
+class="icone-loja"
+onclick="abrirCarrinho()"
+>
+        
+    </div>
+</nav>
+
+<!--tipos de cabelo inicio -->
+<section class="categoria" id="Tipos de Cabelo"></section>
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+    <h1 style="text-align: center;"> Tipos de Cabelo </h1> 
+</h1>
+
+<section class="categoria" id="Tipos de Cabelo"></section>
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+       <p style="margin: 20px; padding: 60px;"> <h1 style="text-align: center;"> Tipos de Cabelos</h1> </p>
+</h1>
+
+<!--deixa as sessoes lado a lado-->
+<div class="produtos">
+<div class="carousel">
+
+    <button class="prev" onclick="mudarSlide(-1)">❮</button>
+
+    <div class="carousel-container" id="carouselContainer">
+
+        <div class="slide">
+            <img src="https://res.cloudinary.com/beleza-na-web/image/upload/f_auto,fl_progressive,q_auto:eco/blog/wordpress/prod/sites/7/2024/03/06203238/AdobeStock_498469673-1.jpg">
+            <h1>Cabelo 3A</h1>
+            <h2>Os cachos são mais soltos e podem variar em forma, com algumas partes mais cacheadas e outras mais lisas.<br>
+            A formação de cachos ocorre de maneira irregular, com raízes que podem ser lisas ou onduladas. <br>
+            Apesar de ser cacheado, o cabelo 3A tende a ter um volume moderado e pode apresentar uma leveza que proporciona um movimento natural.</h2>
+        </div>
+
+        <div class="slide">
+            <img src="https://i.pinimg.com/originals/83/05/53/8305531bd14fc87efffa51f8ce058717.jpg">
+            <h1>Cabelo 3B</h1>
+            <h2>O cabelo 3B apresenta cachos mais fechados que o 3A, mas mais soltos que o 3C, geralmente com a largura de um marcador ou do dedo <br> indicador.
+            Os cachos são bem definidos, elásticos e volumosos, formando espirais da raiz às pontas. <br>
+            A raiz tende a ser um pouco mais lisa, enquanto o comprimento mantém a curvatura em espiral.</h2>
+        </div>
+
+        <div class="slide">
+            <img src="https://i.pinimg.com/originals/c7/09/5b/c7095bae75fcc889c5357fe8f4cd0785.jpg">
+            <h1>Cabelo 3C</h1>
+            <h2>O cabelo 3C é caracterizado por cachos bem definidos, textura mais grossa e tendência ao ressecamento, exigindo cuidados <br>específicos para manter a saúde e a definição dos fios. 
+            Apresenta cachos pequenos e bem definidos que começam a se formar <br> desde a raiz, mais apertados em comparação com os tipos 3A e 3B.</h2>
+        </div>
+ 
+        <div class="slide">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.blD11Z2xt3R-UCSNnWc_KAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3">
+            <h1>Cabelo 4A</h1>
+            <h2>Cachos pequenos e bem definidos, com curvatura de espiral mais fechada, formando cachos que se assemelham a uma <br> letra "S". 
+            O fator encolhimento tende a dar a impressão de que os fios não estão crescendo tão rapidamente. <br>
+            Este tipo de cabelo é mais frágil e pode ser mais ressecado, requerendo atenção e hidratação redobrada.</h2>
+        </div>
+
+        <div class="slide">
+            <img src="https://i.pinimg.com/originals/54/3f/3b/543f3b180e7daae219b0d6fbe20fb07f.jpg">
+            <h1>Cabelo 4B</h1>
+            <h2>O cabelo 4B é caracterizado por cachos muito definidos e apertados, formando um zigue-zague quando <br> esticado.
+            Tem uma textura única que cria um padrão em "Z", diferente do padrão em "S" de outros tipos de <br>cabelos cacheados.</h2>
+        </div>
+
+        <div class="slide">
+            <img src="https://www.cabeloafro.com.br/wp-content/uploads/2018/05/cabelo-4c-d-lovensky-555422-unsplash-2648696-8485341.jpg">
+            <h1>Cabelo 4C</h1>
+            <h2>Curvatura em "Z": os fios são densamente compactados e não apresentam definição natural, o que <br>pode levar ao encolhimento. 
+            Geralmente, o cabelo 4C é mais seco devido à dificuldade da oleosidade natural em <br>alcançar as extremidades dos fios.</h2>
+        </div>
+
+    </div>
+
+    <button class="next" onclick="mudarSlide(1)">❯</button>
+
+</div> </div> 
+
+<!--comercial-->
+<a href="Index.html"> <img src="img/PROPAGANDA INFINITY.jpeg" width="1900" height="500"> </a>
+
+<!--marcas-->
+<section class="categoria" id="Top 5 Marcas no Brasil"></section>
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+     <p style="margin: 40px; padding: 60px;"> <h1 style="text-align: center;"> Produtos</h1> </p>
+</h1>
+
+
+<!-- ACESSÓRIOS -->
+<section id="acessorios" class="container">
+
+  <div class="produtos">
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="img/CREME INFINITY.jpeg">
+      </div>
+      <h3>Creme Infinity</h3>
+      <p class="preco">R$ 55,90</p>
+      <button class="btn-carrinho" onclick="adicionarCarrinho('Camisa Gucci', 129.90)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_1800,c_limit/e_trim/v1/imagens/product/MP66982/1efd1bf4-9e7d-4e6b-b965-98a5a6121b8f-61964a41fc02a13832d0ec63-13868772433627518492.jpg">
+      </div>
+      <h3>Widi Care</h3>
+      <p class="preco">R$ 45,90</p>
+      <button class="btn-carrinho" onclick="adicionarCarrinho('Widi Care', 45.90)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+
+    <div class="produto">
+      <div class="img-container">
+        <img src="https://res.cloudinary.com/beleza-na-web/image/upload/w_1500,f_auto,fl_progressive,q_auto:eco,w_1800,c_limit/e_trim/v1/imagens/product/78750/77d78cb6-00f9-46ca-896f-e219e257375a-kit-salon-line-sos-bomba-original-full-4-produtos.png">
+      </div>
+      <h3>Salon line</h3>
+      <p class="preco">R$ 45,90</p>
+      <button class="btn-carrinho" onclick="adicionarCarrinho('Salon line', 45.90)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="acessorios" class="container">
+
+  <div class="produtos">
+
+  <div class="produto">
+    <div class="img-container">
+      <img src="https://m.media-amazon.com/images/I/71vnBtWvuqL._AC_.jpg">
+    </div>
+    <h3>Skala</h3>
+    <p class="preco">R$ 25,90</p>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Skala', 25.90)">
+      Adicionar ao carrinho
+    </button>
+  </div>
+
+  <div class="produto">
+    <div class="img-container">
+      <img src="https://a-static.mlcdn.com.br/undefinedxundefined/haskell-cosmeticos-kit-4-creme-pentear-leave-in-finalizador/glowshopping/cadastrob2w2604/e2ec99a4b6e1cbffd6b26ef619ae6262.jpeg">
+    </div>
+    <h3>Haskell</h3>
+    <p class="preco">R$ 45,90</p>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Haskell', 45.90)">
+      Adicionar ao carrinho
+    </button>
+  </div>
+
+  <div class="produto">
+    <div class="img-container">
+      <img src="https://www.ofertinha.com.br/wp-content/uploads/2022/11/x-49-768x768.jpg">
+    </div>
+    <h3>Lola</h3>
+    <p class="preco">R$ 45,90</p>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('lola', 45.90)">
+      Adicionar ao carrinho
+    </button>
+  </div>
+
+</div>
+</section>
+
+
+<p style="margin: 20px; padding: 60px;"></p>
+<a href="Index.html"> <img src="img/PROPAGANDA INFINITY.jpeg" width="1900" height="500"> </a>
+<!--influences-->
+            <section class="categoria" id="Influênciadores"></section>
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+    <p style="margin: 40px; padding: 80px;"> <h1 style="text-align: center;"> Influênciadores </h1> 
+</h1> 
+
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> <h2 style="text-align: center;"> Clique nos videos para serem rederecionados para o perfil do influêncer sobre cada cabelo </h2> </h1> 
+
+
+<!--videos de influencer-->
+<A href="https://www.tiktok.com/@gabrielabarim?_r=1&_t=ZS-94NyVaIAVV2"> <video src="img/WhatsApp Video 2026-03-09 at 15.45.55.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+<A href="https://www.tiktok.com/@paolalollaaa?_r=1&_t=ZS-94NynseNGQj"> <video src="img/WhatsApp Video 2026-03-09 at 14.17.21.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+<A href="https://www.tiktok.com/@sarahalvx?_r=1&_t=ZS-94NybmR8qdF"> <video src="img/video 3 de cabelo.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+<A href="https://www.tiktok.com/@juvlogando?_r=1&_t=ZS-94NyZpOcu5x"> <video src="img/video 4 de cabelo.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+<A href="https://www.tiktok.com/@_dos_reiss?_r=1&_t=ZS-94NyeW4jAbQ"> <video src="img/video 5 cabelo.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+<A href="https://www.tiktok.com/@kamillaalbino?_r=1&_t=ZS-94NyfT0Tv9t"> <video src="img/video 6 cabelo.mp4" width="310" height="550" controls autoplay loop muted > </video> </A>
+
+
+<!--final-->
+    <section class="categoria" id="Importância"></section>
+<h1 style="color: rgb(0, 0, 0);font-size: 35px;"> 
+    <p style="margin: 40px; padding: 50px;"> <h1 style="text-align: center;"> Importância dos cuidados </h1> 
+</h1> 
+
+   <h1 style="text-align: center;">  <video src="img/video cuidados.mp4" width="500" height="510" controls muted> </video> </h1> </p>
+
+<h2>ㅤㅤCuidar do cabelo vai muito além de um aspecto estético: ele está diretamente ligado à saúde dos fios, do couro cabeludo e,
+     principalmente, à autoestima de cada pessoa. Um cabelo saudável indica que o corpo está bem nutrido e que há atenção aos 
+     cuidados diários, como lavagem adequada, hidratação, uso de produtos compatíveis com o tipo de fio e proteção contra fatores 
+     externos, como sol, poluição e excesso de calor.
+Além dos cuidados físicos, o cabelo exerce um papel importante na forma como nos percebemos e nos apresentamos ao mundo.
+ Ele pode refletir personalidade, estilo e humor, influenciando significativamente a confiança e a segurança de cada um.
+ Problemas como ressecamento, quebra, queda ou aparência opaca podem impactar emocionalmente, causando insegurança e afetando a autoestima.
+Investir tempo e atenção na saúde capilar, portanto, não é apenas uma questão de vaidade: é uma forma de autocuidado que 
+promove bem-estar, confiança e uma sensação de valorização pessoal. Pequenas atitudes, como escolher produtos adequados, 
+evitar processos agressivos e manter uma alimentação equilibrada, fazem toda a diferença, permitindo que o cabelo seja não 
+apenas bonito, mas também um reflexo de saúde e autoconfiança.</h2>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-col">
+      <h2 class="footer-logo">Infinity Glow</h2>
+      <p>Moda urbana, moderna e cheia de estilo. Seu look, sua identidade.</p>
+    </div>
+
+    <div class="footer-col newsletter">
+      <h3>Assine nossa newsletter</h3>
+      <p>Receba novidades e promoções exclusivas diretamente no seu e-mail.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="footer-col">
+      <h3>Siga Infinity Glow</h3>
+      <div class="footer-social">
+  <a href="https://www.instagram.com" target="_blank"><img src="https://www.freepnglogos.com/uploads/instagram-logo-png/white-instagram-logo-black-and-white-icon--14.png" alt="Instagram"></a>
+  <a href="https://www.facebook.com" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.MuwDvybtb_PqVOGREGIjegHaHb?w=482&h=484&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Facebook"></a>
+  <a href="https://twitter.com" target="_blank"><img src="https://tse4.mm.bing.net/th/id/OIP._j_CS9V2HOZOf4P9vqD4GgHaHa?w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Twitter"></a>
+</div>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    <p>© 2026 Infinity Glow. Todos os direitos reservados.</p>
+
+    
+  </div>
+</footer>
+
+<!-- CARRINHO -->
+<div id="carrinho">
+
+  <div class="carrinho-header">
+    <h2>Seu carrinho</h2>
+    <span class="fechar" onclick="fecharCarrinho()">X</span>
+  </div>
+
+  <div id="itens-carrinho"></div>
+
+  <div class="carrinho-footer">
+    <p>Total: R$ <span id="total-carrinho">0.00</span></p>
+    <button class="finalizar">Finalizar compra</button>
+  </div>
+
+</div>
+
+<script>
+
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+function abrirCarrinho(){
+  document.getElementById("carrinho").classList.add("aberto");
+}
+
+function fecharCarrinho(){
+  document.getElementById("carrinho").classList.remove("aberto");
+}
+
+function adicionarCarrinho(nome, preco){
+
+  carrinho.push({
+    nome: nome,
+    preco: preco
+  });
+
+  salvarCarrinho();
+  atualizarCarrinho();
+}
+
+function removerItem(index){
+  carrinho.splice(index,1);
+  salvarCarrinho();
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho(){
+
+  let container = document.getElementById("itens-carrinho");
+  let total = 0;
+
+  container.innerHTML = "";
+
+  if(carrinho.length === 0){
+    container.innerHTML = "<p>Seu carrinho está vazio</p>";
+  }
+
+  carrinho.forEach((item,index)=>{
+
+    total += item.preco;
+
+    container.innerHTML += `
+      <p>
+        ${item.nome} - R$ ${item.preco.toFixed(2)}
+        <button class="remover" onclick="removerItem(${index})">X</button>
+      </p>
+    `;
+
+  });
+
+  document.getElementById("total-carrinho").innerText = total.toFixed(2);
+
+}
+
+function salvarCarrinho(){
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+atualizarCarrinho();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masculino | FashionBrands</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+<div class="container header-container">
+
+<div class="logo">FashionBrands</div>
+
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="masculino.html">Masculino</a>
+<a href="feminino.html">Feminino</a>
+<a href="colecoes.html">Coleções</a>
+<a href="lancamentos.html">Lançamentos</a>
+<a href="sobre.html">Sobre</a>
+<a href="contato.html">Contato</a>
+</nav>
+
+<!-- BARRA DE PESQUISA -->
+    <div class="barra-pesquisa">
+
+  <img src="https://img.icons8.com/ios-filled/50/search.png" class="icone-pesquisa">
+
+  <input 
+    type="text" 
+    id="campo-pesquisa" 
+    placeholder="Buscar produtos..."
+    onkeyup="pesquisarProdutos()"
+  >
+
+</div>
+
+</div>
+</header>
+
+
+<!-- ================= TÍTULO ================= -->
+
+<!-- ================= FAIXA DE DESTAQUE ================= -->
+<section class="faixa-destaque">
+  <div class="container">
+    <h1>Moda Masculina</h1>
+    <p>Confira nossas peças masculinas com estilo urbano, conforto e qualidade. Camisas, polos e shorts perfeitos para qualquer ocasião.</p>
+    <p>Estilo urbano e moderno para o dia a dia</p>
+  </div>
+</section>
+
+
+
+<!-- ================= PRODUTOS ================= -->
+
+<section class="produtos">
+
+<div class="container">
+
+<h2 class="section-title">Masculino</h2>
+
+
+<!-- FILTRO -->
+
+<div class="filtro-produtos">
+
+<button onclick="filtrarProdutos('todos')">Todos</button>
+
+<button onclick="filtrarProdutos('camisa')">Camisas</button>
+
+<button onclick="filtrarProdutos('short')">Shorts</button>
+
+</div>
+
+<p id="contador-produtos"></p>
+<h3>Produtos disponíveis</h3>
+<div class="produtos-grid">
+
+
+<!-- CAMISA -->
+
+<div class="produto-card" data-categoria="camisa">
+<img src="https://imagena1.lacoste.com/dw/image/v2/AAUP_PRD/on/demandware.static/-/Sites-master/default/dw14fe2e56/PH2026_522_24.jpg?sw=460&sh=460&sm=fit">
+<div class="produto-info">
+<h3>Lacoste Polo</h3>
+<span>R$129,90</span>
+</div>
+</div>
+
+<p id="sem-resultados" style="display:none; text-align:center; margin-top:30px; font-weight:bold;">
+Nenhum produto encontrado
+</p>
+
+
+<div class="produto-card" data-categoria="camisa">
+<img src="https://cdn-images.farfetch-contents.com/20/37/46/90/20374690_50354533_1000.jpg">
+<div class="produto-info">
+<h3>Gucci Camisa Polo</h3>
+<span>R$99,90</span>
+</div>
+</div>
+
+
+<div class="produto-card" data-categoria="camisa">
+<img src="https://cellshop.com.br/wp-content/uploads/2024/12/camisa-polo-lacoste-dh205023siz-masculino-azul-ceu-1.jpg">
+<div class="produto-info">
+<h3>Camisa Polo Azul</h3>
+<span>R$119,90</span>
+</div>
+</div>
+
+
+
+<!-- SHORTS -->
+
+<div class="produto-card" data-categoria="short">
+<img src="https://cdn.awsli.com.br/800x800/1826/1826544/produto/160160907/8-1-9rmicjfno6.jpg">
+<div class="produto-info">
+<h3>Short Liso Verde</h3>
+<span>R$149,90</span>
+</div>
+</div>
+
+
+<div class="produto-card" data-categoria="short">
+<img src="https://i.pinimg.com/originals/73/35/70/733570cf04d7ad295148610060daeb56.jpg">
+<div class="produto-info">
+<h3>Short Linho Bege</h3>
+<span>R$199,90</span>
+</div>
+</div>
+
+
+<div class="produto-card" data-categoria="short">
+<img src="https://www.statononline.com/images/hires/9888BN-BLACK.jpg">
+<div class="produto-info">
+<h3>Short Linho Preto</h3>
+<span>R$199,90</span>
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+<script src="js/script.js"></script>
+
+<section class="beneficios">
+
+<div class="container beneficios-container">
+
+<div class="beneficio">
+<h3>🚚 Frete Rápido</h3>
+<p>Entrega para todo o Brasil.</p>
+</div>
+
+<div class="beneficio">
+<h3>💳 Pagamento Seguro</h3>
+<p>Diversas formas de pagamento.</p>
+</div>
+
+<div class="beneficio">
+<h3>⭐ Qualidade Garantida</h3>
+<p>Produtos selecionados.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-col">
+      <h2 class="footer-logo">FashionBrands</h2>
+      <p>Moda urbana, moderna e cheia de estilo. Seu look, sua identidade.</p>
+    </div>
+
+    <div class="footer-col newsletter">
+      <h3>Assine nossa newsletter</h3>
+      <p>Receba novidades e promoções exclusivas diretamente no seu e-mail.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="footer-col">
+      <h3>Siga a FashionBrands</h3>
+      <div class="footer-social">
+  <a href="https://www.instagram.com" target="_blank"><img src="https://www.freepnglogos.com/uploads/instagram-logo-png/white-instagram-logo-black-and-white-icon--14.png" alt="Instagram"></a>
+  <a href="https://www.facebook.com" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.MuwDvybtb_PqVOGREGIjegHaHb?w=482&h=484&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Facebook"></a>
+  <a href="https://twitter.com" target="_blank"><img src="https://tse4.mm.bing.net/th/id/OIP._j_CS9V2HOZOf4P9vqD4GgHaHa?w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Twitter"></a>
+</div>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    <p>© 2026 FashionBrands. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

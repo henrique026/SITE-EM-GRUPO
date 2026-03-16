@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinity Glow</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- CABEÇALHO -->
+<header class="header">
+  <div class="container header-container">
+
+<img src="img/e598cdea-0bb9-4140-8a06-2ad3ca87b18d-Photoroom (1).png" class="logo-menu" alt="logo"> 
+
+    <nav class="nav">
+      <a href="Index.html">Home</a>
+      
+      <a href="lancamentos.html">Lançamentos</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+      <a href="curly hair senac.html">Salão</a>
+      <a href="ACC.html">Acessórios</a>
+      <a href="cadastro.html">Login</a>
+    
+<!-- BARRA DE PESQUISA -->
+    <div class="barra-pesquisa">
+
+  <img src="https://img.icons8.com/ios-filled/50/search.png" class="icone-pesquisa">
+
+  <input 
+    type="text" 
+    id="campo-pesquisa" 
+    placeholder="Buscar produtos..."
+    onkeyup="pesquisarProdutos()"
+  >
+
+</div>
+
+<!-- MENU DIREITA -->
+<div class="menu-direita">
+
+<img 
+src="https://img.icons8.com/ios-filled/50/shopping-bag.png" 
+class="icone-loja"
+onclick="abrirCarrinho()"
+>
+
+</div>
+
+  </div>
+</header>
+
+<!-- HERO / BANNER PRINCIPAL -->
+<section class="hero">
+
+  
+
+  <div class="hero-content">
+    <h1>Estilo que brilha sem limites.
+<br>Moda urbana para quem quer se destacar.</h1>
+    <a href="colecoes.html" class="btn-hero">Ver coleção</a>
+  </div>
+
+</section>
+
+<!-- LANÇAMENTOS -->
+<section class="lancamentos" id="lancamentos">
+  <div class="container">
+    <h2 class="section-title">Lançamentos</h2>
+    <p class="section-subtitle">Novidades que definem o estilo Infinity Glow</p>
+
+    <div class="produtos-grid">
+
+      <div class="produto-card">
+        <img src="https://midonstore.com/cdn/shop/files/c1b96632.jpg?v=1734406562&width=2048" alt="Camisa Oversized Preta">
+        <div class="produto-info">
+          
+          <h3>Camisa Gucci</h3>
+    <span>R$ 129,90</span>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Camisa Gucci', 129.90)">
+Adicionar ao carrinho
+</button>
+          
+        </div>
+      </div>
+
+      <p id="sem-resultados" style="display:none; text-align:center; margin-top:30px; font-weight:bold;">
+Nenhum produto encontrado
+</p>
+
+<!--CAMISA OVERSIZED PRETA-->
+      <div class="produto-card">
+        <img src="https://i.pinimg.com/originals/77/33/79/773379858d28da59d36813fca43cc980.jpg" alt="Camisa Oversized Preta">
+        <div class="produto-info">
+          
+          <h3>Camisa Oversized Preta</h3>
+    <span>R$ 129,90</span>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Camisa Oversized Preta', 129.90)">
+Adicionar ao carrinho
+</button>
+          
+        </div>
+      </div>
+
+      <p id="sem-resultados" style="display:none; text-align:center; margin-top:30px; font-weight:bold;">
+Nenhum produto encontrado
+</p>
+
+<!--SHORT STREET PRETO-->
+      <div class="produto-card">
+        <img src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/213/435/products/27052021-img_24861-42203fac65f823faec16225589656765-1024-1024.jpg" alt="Camisa Oversized Preta">
+        <div class="produto-info">
+          
+          <h3>Short Street Preto</h3>
+    <span>R$ 145,90</span>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Short Street Preto', 145.90)">
+Adicionar ao carrinho
+</button>
+          
+        </div>
+      </div>
+
+      <p id="sem-resultados" style="display:none; text-align:center; margin-top:30px; font-weight:bold;">
+Nenhum produto encontrado
+</p>
+<!-- SHORT CARGO BRANCO -->
+      <div class="produto-card">
+        <img src="https://static.zattini.com.br/produtos/short-masculino-casual-tactel-com-cintura-elastica-duravel/14/DQH-1035-014/DQH-1035-014_zoom1.jpg?ts=1694583659&" alt="Camisa Oversized Preta">
+        <div class="produto-info">
+          
+          <h3>Short Cargo Branco</h3>
+    <span>R$ 145,90</span>
+    <button class="btn-carrinho" onclick="adicionarCarrinho('Short Cargo Branco', 145.90)">
+Adicionar ao carrinho
+</button>
+          
+        </div>
+      </div>
+
+      <p id="sem-resultados" style="display:none; text-align:center; margin-top:30px; font-weight:bold;">
+Nenhum produto encontrado
+</p>
+</section>
+
+<!-- PROMOÇÃO DESTAQUE -->
+<section class="promo-destaque">
+  <div class="container promo-container">
+
+    <div class="promo-texto">
+      <span class="promo-tag">Oferta Especial</span>
+      <h2>Até 50% OFF</h2>
+      <p>Estilo, conforto e atitude em um só look. O conjunto  Infinity Glow foi criado para quem quer se destacar sem abrir mão da praticidade no dia a dia. Com um design moderno e caimento perfeito, ele combina com qualquer momento: do treino ao passeio, do casual ao urbano. O preto traz elegância e versatilidade, enquanto os detalhes da marca reforçam personalidade e presença.</p>
+      <a href="colecoes.html" class="btn-oferta">Ver ofertas</a>
+    </div>
+
+    <div class="promo-imagem">
+      <img src="img/CAMISA POLO.jpeg">
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="categorias-destaque">
+  <div class="container">
+    <h2 class="section-title">Coleções em destaque</h2>
+    <p class="section-subtitle">Descubra as coleções que definem seu estilo</p>
+  </div>
+
+  <div class="categorias-grid">
+    <div class="categoria-card">
+      <a href="lancamentos.html">
+      <img src="https://images.tcdn.com.br/img/img_prod/947450/camiseta_oversized_preto_1147_1_a1875cbf76e34671bc2c0b9c47b24290.jpg" alt="Footwear">
+      <span>Camisetas</span>
+      </a>
+    </div>
+
+    <div class="categoria-card">
+      <a href="ACC.html">
+      <img src="https://www.lulus.com/images/product/xlarge/126066.jpg" alt="Jacket">
+      <span>Acessórios</span>
+      </a>
+    </div>
+
+    <div class="categoria-card">
+      <a href="cortes.html">
+      <img src="https://i.pinimg.com/736x/a3/ba/31/a3ba31e1fbdd2c910f0ff957ce9647d6.jpg" alt="Accessories">
+      <span>Cortes</span>
+    </a>
+    </div>
+
+    <div class="categoria-card">
+      <a href="lancamentos.html">
+      <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-mc1ulama5a5jfb" alt="Bags">
+      <span>Calças</span>
+      </a>
+    </div>
+
+    <div class="categoria-card">
+      <a href="ACC.html">
+      <img src="https://i.pinimg.com/originals/bc/11/86/bc11869aceaa45b2506db2820224bf39.jpg" alt="Bottoms">
+      <span>Acessórios</span>
+      </a>
+    </div> 
+
+    <div class="categoria-card">
+      <a href="curly hair senac.html">
+      <img src="img/CREME INFINITY.jpeg" alt="Bottoms">
+      <span>Cremes</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-container">
+
+    <div class="footer-col">
+      <h2 class="footer-logo">Infinity Glow</h2>
+      <p>Moda urbana, moderna e cheia de estilo. Seu look, sua identidade.</p>
+    </div>
+
+    <div class="footer-col newsletter">
+      <h3>Assine nossa newsletter</h3>
+      <p>Receba novidades e promoções exclusivas diretamente no seu e-mail.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div class="footer-col">
+      <h3>Siga Infinity Glow</h3>
+      <div class="footer-social">
+  <a href="https://www.instagram.com" target="_blank"><img src="https://www.freepnglogos.com/uploads/instagram-logo-png/white-instagram-logo-black-and-white-icon--14.png" alt="Instagram"></a>
+  <a href="https://www.facebook.com" target="_blank"><img src="https://tse3.mm.bing.net/th/id/OIP.MuwDvybtb_PqVOGREGIjegHaHb?w=482&h=484&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Facebook"></a>
+  <a href="https://twitter.com" target="_blank"><img src="https://tse4.mm.bing.net/th/id/OIP._j_CS9V2HOZOf4P9vqD4GgHaHa?w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Twitter"></a>
+</div>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    <p>© 2026 Infinity Glow. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- CARRINHO -->
+<div id="carrinho" class="carrinho-fechado">
+  <div class="carrinho-header">
+    <h2>Seu carrinho</h2>
+    <span class="fechar" onclick="fecharCarrinho()">X</span>
+  </div>
+  
+  <div id="itens-carrinho">
+    <p>Seu carrinho está vazio</p>
+  </div>
+
+  <div class="carrinho-footer">
+    <p>Total: R$ <span id="total-carrinho">0,00</span></p>
+    <button class="finalizar">Finalizar compra</button>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
